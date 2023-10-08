@@ -1,6 +1,7 @@
 import { action, computed, makeAutoObservable, observable } from "mobx";
 
 import { Items } from "../Database.js/Database";
+import { createContext, useContext } from "react";
 
 class Products {
     productsCart = [];
@@ -111,4 +112,9 @@ class Products {
     }
 }
 
-export const productsStore = new Products();
+const ProductsContext = createContext(new Products());
+
+export const useProducts = () => useContext(ProductsContext);
+
+// export const productsStore = new Products();
+
